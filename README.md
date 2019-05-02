@@ -17,8 +17,6 @@ npm install
 Crear tarea 
 
 Opciones:
-  --version          Muestra número de versión                        [booleano]
-  --help             Muestra ayuda                                    [booleano]
   --descripcion, -d  Descripcion de la tarea por hacer
   --completado, -c   Marca cómo completa o incompleta a determinada tarea
                                                                 [defecto: false]
@@ -29,8 +27,16 @@ Opciones:
 actualizar estado de la tarea
 
 Opciones:
-  --version          Muestra número de versión                        [booleano]
-  --help             Muestra ayuda                                    [booleano]
   --descripcion, -d  Descripcion de la tarea por hacer
   --completado, -c   Marca cómo completa o incompleta a determinada tarea
                                                                 [defecto: false]
+
+### app borra
+borra la tarea
+
+Opciones:
+  --descripcion, -d
+
+
+### app listar
+lista todas las tareas

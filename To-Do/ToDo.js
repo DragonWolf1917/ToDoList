@@ -53,29 +53,47 @@ const actualizar = (descripcion, completado) => {
         return console.log(`\"${descripcion}\" no existe, por favor intente nuevamente`.bold.red);
     }
 
-    console.log(listaToDo);
-
     guardar();
     getListado();
 }
 
+const borrar = (descripcion) => {
+    cargar();
+
+    let index = listaToDo.findIndex(tarea => tarea.descripcion === descripcion);
+    if (index >= 0) {
+        listaToDo.splice(index, 1);
+        console.log(`La tarea \"${descripcion}\" ha sido borrada con éxito`.bold.green);
+    } else {
+        console.log(`Error: no existe ninguna tarea \"${descripcion}\"`.bold.red);
+    }
+
+    guardar();
+}
+
 const getListado = () => {
     cargar();
-    console.log("==========Tareas==========".magenta)
-    for (let i in listaToDo) {
-        console.log(listaToDo[i].descripcion);
-        if (listaToDo[i].completado) {
-            console.log("Estado " + "completo".green);
-        } else {
-            console.log("Estado " + "incompleto".red);
+
+    if (listaToDo.length != 0) {
+        console.log("==========Tareas==========".magenta)
+        for (let i in listaToDo) {
+            console.log(listaToDo[i].descripcion.bold.yellow);
+            if (listaToDo[i].completado) {
+                console.log("\tEstado " + "completo\n".green);
+            } else {
+                console.log("\tEstado " + "incompleto\n".red);
+            }
         }
+        console.log("==========================".magenta)
+    } else {
+        console.log("No hay tareas registradas".cyan);
     }
-    console.log("==========================".magenta)
 }
 
 module.exports = {
     crear,
     guardar,
     getListado,
-    actualizar
+    actualizar,
+    borrar
 }
